@@ -12,17 +12,17 @@ export class BookPostService {
   constructor(private httpClient:HttpClient) { }
 
   getUsers():Observable<any> {
-    return  this.httpClient.get(environment.bookPostBaseUrl+'/users').pipe(catchError(this.handleError));
+    return  this.httpClient.get(environment.bookPostBaseUrl+'/users').pipe(retry(3),catchError(this.handleError));
   }
 
 
   getUser(userId:number){
-    return  this.httpClient.get(environment.bookPostBaseUrl+'/users/'+userId).pipe(catchError(this.handleError));
+    return  this.httpClient.get(environment.bookPostBaseUrl+'/users/'+userId).pipe(retry(3),catchError(this.handleError));
   }
 
 
   getUserTimeLine(userId:number){
-    return  this.httpClient.get(environment.bookPostBaseUrl+'/users-timeline/'+userId).pipe(catchError(this.handleError));
+    return  this.httpClient.get(environment.bookPostBaseUrl+'/users-timeline/'+userId).pipe(retry(3),catchError(this.handleError));
   }
 
 
@@ -34,7 +34,6 @@ export class BookPostService {
       console.error(
         `Backend returned code ${error.status}, body was: `, error.error);
     }
-    // Return an observable with a user-facing error message.
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
