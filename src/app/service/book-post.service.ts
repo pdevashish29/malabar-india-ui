@@ -16,12 +16,12 @@ export class BookPostService {
   }
 
 
-  getUser(userId:number){
+  getUser(userId:number):Observable<any>{
     return  this.httpClient.get(environment.bookPostBaseUrl+'/users/'+userId).pipe(retry(3),catchError(this.handleError));
   }
 
 
-  getUserTimeLine(userId:number){
+  getUserTimeLine(userId:string):Observable<any>{
     return  this.httpClient.get(environment.bookPostBaseUrl+'/users-timeline/'+userId).pipe(retry(3),catchError(this.handleError));
   }
 

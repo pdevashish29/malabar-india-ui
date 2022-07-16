@@ -8,8 +8,8 @@ import { UsersComponent } from './users/users.component';
 const routes: Routes = [
   {path:'',redirectTo:'users',pathMatch:'full'},
   {path:'users',component:UsersComponent},
-  {path:'users/{id}',component:UserComponent},
-  {path:'user-timeline',component:UserTimelineComponent},
+  {path:'users/:id',component:UserComponent},
+  {path:'user-timeline/:id',component:UserTimelineComponent},
   {path:'**', component:PageNotFoundComponent}
 
 ];
