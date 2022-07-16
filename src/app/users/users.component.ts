@@ -11,10 +11,10 @@ export class UsersComponent implements OnInit {
  
   users:any=[];
    
-  constructor(private bookPostService:BookPostService) { }
+  constructor(private postBookService:BookPostService) { }
 
   ngOnInit(): void {
-    this.bookPostService.getUsers().subscribe(data => {
+    this.postBookService.getUsers().subscribe(data => {
       console.log(data)
       this.users=data;
     })
