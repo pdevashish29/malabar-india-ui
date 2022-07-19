@@ -1,25 +1,39 @@
 <main class="container">
-
-    <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
-      <img class="me-3" src="https://getbootstrap.com/docs/5.2/assets/brand/bootstrap-logo-white.svg" alt="" width="48" height="38">
-      <div class="lh-1">
-        <h1 class="h6 mb-0 text-white lh-1">{{userTimeLine.data.user.name}}'s TImeline</h1>
-        <small>  </small>
-      </div>
-    </div>
-
-    <div class="card mb-3" *ngFor="let item of userTimeLine.data.posts">
-        <img src="https://picsum.photos/640/360" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">{{item.title}}</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-
-          <ul class="list-group list-group-flush">
-            <li *ngFor="let comment of item.comments" class="list-group-item">{{comment.body}}</li>
-          </ul>
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+      <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
+        <img class="me-3" src="https://getbootstrap.com/docs/5.2/assets/brand/bootstrap-logo-white.svg" alt="" width="48" height="38">
+        <div class="lh-1">
+          <h1 class="h6 mb-0 text-white lh-1">{{userTimeLine.data.user.name}}'s TImeline</h1>
+          <small>  </small>
         </div>
       </div>
+  
+      <div class="alert alert-primary" role="alert" *ngIf="isError">
+          Internal Server error, Please try again later...
+      </div>
+
+      
+      <div class="card mb-3" *ngFor="let item of userTimeLine.data.posts">
+          <img src="https://picsum.photos/640/360" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title text-capitalize">{{item.title}}</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+  
+            <ul class="list-group list-group-flush">
+              <li *ngFor="let comment of item.comments" class="list-group-item"><small class="text-primary">@{{comment.email}}</small><br> {{comment.body}}  </li>
+            </ul>
+          </div>
+        </div>
+
+
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+
+    
     
   </main>
 
